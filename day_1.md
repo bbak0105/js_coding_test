@@ -72,3 +72,64 @@ rl.on('line', function(line) {
     process.exit();
 });
 ```
+<br/><br/>
+
+# 3. 언제봐도 까먹는 reduce
+
+<br/>
+
+```javaScript
+/**
+ * reduce()는 리턴 값이 다시 input으로 들어간다고 보면 편함.
+ * 
+*/
+let data = [5, 2, 9, 8, 4];
+
+// min 구하기 예제
+let minValue = data.reduce((a, b) => Math.min(a, b));
+
+// 원소의 합 구하기 예제
+let summary = data.reduce((a, b) => a + b);
+```
+
+<br/><br/>
+
+# 4. 그 외에 코테에서 알면 좋은 것
+
+<br/>
+
+1. 배열 초기화
+```javaScript 
+// 1. 직접 설정
+let arr = [8, 1, 4, 5, 7];
+
+// 2. Array로 설정 (길이가 5이고 0으로 초기화)
+let arr = new Array(5).fill(0);
+```
+
+<br/>
+
+2. 집합 자료형 (중복제거)
+```javaScript 
+let mySet = new Set();
+
+mySet.add(3);
+mySet.add(5);
+mySet.add(7);
+mySet.add(3);
+
+console.log(`원소의 개수: ${mySet.size}`);
+console.log(`원소 7의 포함여부: ${mySet.has(7)}`);
+
+mySet.delete(5);
+
+for(let item of mySet) console.log(item);
+```
+<br/>
+
+3. 실수 반올림
+```javaScript 
+// 특정 실수에 대하여 toFixed()를 이용해 소수점 반올림
+let x = 123.456;
+console.log(x.toFixed(2));
+```
