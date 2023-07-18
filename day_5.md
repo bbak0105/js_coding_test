@@ -158,8 +158,88 @@ console.log(Math.max(Number(newA), Number(newB)));
 
 <br/> 
 
-* 예제 입력 <br/> 
+* 예제 입/출력 <br/> 
 3 <br/> 
 happy <br/> 
 new <br/> 
 year
+
+<br/>
+
+* 예제 입/출력 <br/> 
+9 <br/> 
+aaa <br/> 
+aaazbz <br/> 
+babb <br/> 
+aazz <br/> 
+azbz <br/> 
+aabbaa <br/> 
+abacc <br/> 
+aba <br/> 
+zzaz 
+
+> 내가 푼 방법
+
+```javaScript
+
+const input = "9\naaa\naaazbz\nbabb\naazz\nazbz\naabbaa\nabacc\naba\nzzaz".split('\n');
+input.shift(); // 첫 번째 그냥 날려버리기
+let count = 0;
+
+for(let i=0; i<input.length; i++) {
+	// 약간 여기서 꼼수..ㅋㅋ 리듀스 한번 더 돌기위해서 띄어쓰기함
+	const item = input[i]+" ";  
+	const arr = [];
+	
+	item.split("").reduce((curr, accu) => {
+		// 같은 애들 넘기고 다를 경우 curr를 arr로 추가해줌
+		// 그러면 연속된 애들 무시하고 aaabba => ['a','b','a'] 처럼 담김 
+		if(curr !== accu) arr.push(curr);
+		return accu;
+	});
+	
+	const compareCount = new Set(arr).size;
+	if(arr.length === compareCount) count++;
+}
+
+console.log(count);
+
+```
+
+> 풀이
+
+```javaScript
+
+function check(data) {
+	let setData = new Set(data[0]);
+
+	for(let i=0; i<data.length-1; i++) {
+		// 오른쪽 단어와 다르다면 
+		if(data[i] != data[i+1]) {
+			// 이미 등장한 적 있는 알파벳이라면 
+			if(setData.has(data[i+1])) {
+				return false;
+			} else {
+				// 등장한적이 없다면 더해줌
+				setData.add(data[i+1]);
+			}
+		}
+	}
+
+	return true;
+}
+
+let fs = require("fs");
+let input = fs.readFileSync("/dev/stdin").toString().split("\n");
+
+let n = Number(input[0]);
+let summary = 0;
+
+for (let i=1; i<=n; i++) {
+	let data = input[i];
+	if (check(data)) summary += 1;
+}
+
+console.log(summary);
+
+```

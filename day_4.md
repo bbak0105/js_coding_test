@@ -23,7 +23,6 @@
 // const fs = require("fs");
 // const input = fs.readFileSync().toString().split("\n");
 
-
 const input = "5\n20 10 35 30 7".split("\n");
 const n = Number(input[0]);
 const arr = input[1].split(" ").map(Number);
