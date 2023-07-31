@@ -1,4 +1,4 @@
-<b> 🐰 2023.07.12 공부시간 1시간 🐰 </b>
+<b> 🐰 2023.07.12 공부시간 2시간 🐰 </b>
 
 <br/>
 
@@ -206,6 +206,9 @@ console.log(count);
 
 ```
 
+<br/> 
+
+
 > 풀이
 
 ```javaScript
@@ -243,3 +246,54 @@ for (let i=1; i<=n; i++) {
 console.log(summary);
 
 ```
+
+<br/>
+
+----
+
+ <br/> 
+
+### 4. 단어의 개수 
+<br/> 
+
+* 문제 <br/> 
+영어 대소문자와 공백으로 이루어진 문자열이 주어진다. 이 문자열에는 몇 개의 단어가 있을까? 이를 구하는 프로그램을 작성하시오. 단, 한 단어가 여러 번 등장하면 등장한 횟수만큼 모두 세어야 한다.
+
+<br/> 
+
+* 예제 입/출력 <br/> 
+The Curious Case of Benjamin Button
+=> 6
+
+> 내가 푼 풀이
+
+```javaScript
+
+// const fs = require("fs");
+// const input = fs.readFileSync("/dev/jiyuShin").toString().split(" ");
+const input = " The Curious Case of Benjamin Button ".split(" ");
+const havingValueArr = input.filter(item => item !== "");
+
+console.log(havingValueArr.length);
+
+```
+
+<br/>
+
+> 풀이
+
+```javaScript
+
+let data = input[0].trim().split(" ");
+
+if(data == "") {
+	console.log(0);
+} else {
+	console.log(data.length)
+}
+
+```
+
+<br/>
+
+> <b>💡💡💡 trim으로 쉽게 공백을 제거한 것이 킬포인트!</b>
